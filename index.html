@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>长喆的个人主页</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .i18 {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .info {
+      width: 100vw;
+      height: 100vh;
+      font-size: 4rem;
+      color: white;
+      background: black;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .compony {
+      width: 100vw;
+      height: 100vh;
+      font-size: 1.5rem;
+      color: black;
+      background: #ddd;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .compony .content {
+      width: 80%;
+    }
+
+    .compony .content>div {
+      padding-bottom: 6vh;
+    }
+
+    .compony .content>div>span {
+      padding-left: 1.2vw;
+    }
+
+    .work {
+      width: 100vw;
+      min-height: 100vh;
+      color: white;
+      background: black;
+      font-size: 1.5rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .work-item {
+      width: 80%;
+    }
+
+    .compony-two {
+      padding-top: 12vh;
+    }
+
+    .work-item ul>li {
+      padding-top: 3vh;
+    }
+
+    footer {
+      width: 100vw;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="i18">
+      <span>CN</span> | <span>EN</span>
+    </div>
+    <div class="info flex">
+      <div>Hello! this is Changzhe, AKA MrPanda. </div>
+    </div>
+    <div class="compony flex">
+      <div class="content">
+        <div>👨‍🎤 <span>Changzhe</span></div>
+        <div>👨‍💻 <span>FrontEnd Engineer</span></div>
+        <div>🏢 <span>Alibaba Group. Taobao Fed.</span></div>
+        <div>📮 <span>mrpandaliu@foxmail.com | changzhe.lc@alibaba-inc.com</span></div>
+        <div>💻 <span>Focus on Content and Society Field and Web Effective Dev Tools. </span></div>
+      </div>
+    </div>
+    <div class="work flex">
+      <div class="work-item">
+        <h4>Bytedance Education: 2021.1 ~ 2021.12</h4>
+        <ul>
+          <li>K12 Efficient Manage System development, including: activity, CRM, etc.</li>
+          <li>Manage System Development Best Practice, including: micro FrontEnd, ESLint, package manage, etc.</li>
+          <li>Interface Design Language and TypeScript system, including kinds of type declaration generator, data mock, etc.</li>
+          <li>Low Code by using VS Code Plugin.</li>
+        </ul>
+        <h4 class="compony-two">Alibaba Taobao: 2021.12 ~ now</h4>
+        <ul>
+          <li>Taobao Guanggang Marketing activities develop and H5 page performance optimization.</li>
+        </ul>
+      </div>
+    </div>
+    <footer>
+      Copyright © 2022 changzhe.lc.
+    </footer>
+  </div>
+  <script>
+    class HomePage {
+
+    }
+  </script>
+</body>
+
+</html>
