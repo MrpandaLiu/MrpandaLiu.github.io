@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
+
+        .wrapper {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
         .birthday .container{
             width:600px;
             height:600px;
@@ -11,6 +21,7 @@
             background: #fafafa;
             border-radius:5px;
             position: relative;
+            transform: scale(1.5);
         }
  
         /**
@@ -232,43 +243,45 @@
  
 </head>
 <body>
-    <div class="birthday">
-        <div class="container">
- 
-            <div style="left: 230px" class="candle">
-                <div class="fire"></div>
-                <div class="top"></div>
-                <div class="body"></div>
-                <div class="bottom"></div>
-            </div>
-
-            <div style="left: 370px" class="candle">
-                <div class="fire"></div>
-                <div class="top"></div>
-                <div class="body"></div>
-                <div class="bottom"></div>
-            </div>
- 
-            <div class="top-one">
-                <div class="top"></div>
-                <div class="side"></div>
-                <div class="bottom"></div>
-                <div class="text">
-                    啵啵 Happy Birthday
+    <div class="wrapper">
+        <div class="birthday">
+            <div class="container">
+     
+                <div style="left: 230px" class="candle">
+                    <div class="fire"></div>
+                    <div class="top"></div>
+                    <div class="body"></div>
+                    <div class="bottom"></div>
                 </div>
-            </div>
- 
-            <div class="bottom-one">
-                <div class="top"></div>
-                <div class="side"></div>
-                <div class="bottom">
-                    <div class="line line1"></div>
+    
+                <div style="left: 370px" class="candle">
+                    <div class="fire"></div>
+                    <div class="top"></div>
+                    <div class="body"></div>
+                    <div class="bottom"></div>
                 </div>
-                <div class="flower">
-                    <i style="top:-20px;transform: rotateY(50deg)">生</i>
-                    <i style="top:15px;transform: rotateY(30deg)">日</i>
-                    <i style="top:15px;transform: rotateY(30deg)">快</i>
-                    <i style="top:-20px;transform: rotateY(50deg)">乐</i>
+     
+                <div class="top-one">
+                    <div class="top"></div>
+                    <div class="side"></div>
+                    <div class="bottom"></div>
+                    <div class="text">
+                        啵啵 Happy Birthday
+                    </div>
+                </div>
+     
+                <div class="bottom-one">
+                    <div class="top"></div>
+                    <div class="side"></div>
+                    <div class="bottom">
+                        <div class="line line1"></div>
+                    </div>
+                    <div class="flower">
+                        <i style="top:-20px;transform: rotateY(50deg)">生</i>
+                        <i style="top:15px;transform: rotateY(30deg)">日</i>
+                        <i style="top:15px;transform: rotateY(30deg)">快</i>
+                        <i style="top:-20px;transform: rotateY(50deg)">乐</i>
+                    </div>
                 </div>
             </div>
         </div>
