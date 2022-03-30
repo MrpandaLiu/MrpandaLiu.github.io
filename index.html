@@ -1,140 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="keywords" content="前端,程序员,长喆,MrPanda">
-  <title>长喆的个人主页</title>
-  <style>
-    * {
-      padding: 0;
-      margin: 0;
-      font-family: Georgia, 'Times New Roman', Times, serif;
-    }
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>啵啵的简历</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
-    a {
-      text-decoration: none;
-      color: white;
-    }
+        .root {
+            width: 100vw;
+            height: 100vh;
+        }
 
-    .i18 {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      color: white;
-    }
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    .flex {
-      display: flex;
-    }
+        .pd-10 {
+            padding: 10px;
+        }
 
-    .info {
-      width: 100vw;
-      height: 100vh;
-      font-size: 4rem;
-      color: white;
-      background: black;
-      justify-content: center;
-      align-items: center;
-    }
+        .title {
+            color: rgb(139, 137, 137);
+            margin: 20px 0;
+        }
 
-    .info>div {
-      text-align: center;
-      width: 80%;
-    }
+        .header {
+            width: 100%;
+            height: 300px;
+            position: relative;
+        }
 
-    .compony {
-      width: 100vw;
-      height: 100vh;
-      font-size: 1.5rem;
-      color: black;
-      background: #ddd;
-      justify-content: center;
-      align-items: center;
-    }
+        .header>.avatar {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            margin-top: 5%;
+            position: relative;
+        }
 
-    .compony .content {
-      width: 80%;
-    }
+        .header>.avatar>img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 6px solid #1a5273;
+            z-index: 100;
+        }
 
-    .compony .content>div {
-      padding-bottom: 6vh;
-    }
+        .header>.bottom {
+            width: 100%;
+            height: 200px;
+            position: absolute;
+            bottom: 0;
+            background: #1a5273;
+            color: #fff;
+            justify-content: flex-end;
+        }
 
-    .compony .content>div>span {
-      padding-left: 1.2vw;
-    }
+        .content {
+            width: 80%;
+            margin: 0 auto;
+            color: #1a5273;
+            font-weight: bold;
+        }
 
-    .work {
-      width: 100vw;
-      min-height: 100vh;
-      color: white;
-      background: black;
-      font-size: 1.5rem;
-      justify-content: center;
-      align-items: center;
-    }
+        .content-title {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
 
-    .work-item {
-      padding: 2vh 0;
-      width: 80%;
-    }
-
-    .compony-two {
-      padding-top: 12vh;
-    }
-
-    .work-item ul>li {
-      padding-top: 3vh;
-    }
-
-    footer {
-      width: 100vw;
-      height: 40px;
-      line-height: 40px;
-      text-align: center;
-    }
-  </style>
+        .content li {
+            line-height: 200%;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="wrapper">
-    <div class="i18">
-      <span><a href="./index.html">简体中文</a></span> | <span><a href="./index-en.html">英语</a></span>
+    <div class="root flex-col">
+        <h1 class="title">RESUME/CV</h1>
+        <div class="header">
+            <div class="bottom  flex-col">
+                <h2 class="pd-10" style="font-size: 36px;"></h2>
+                <p class="pd-10">求职意向: 猫咖服务员</p>
+            </div>
+            <div class="avatar">
+                <img src="https://gw.alicdn.com/imgextra/i3/O1CN01esThpP1NfTGHaXKqB_!!6000000001597-2-tps-426-420.png">
+            </div>
+        </div>
+        <div class="content">
+            <h3 class="content-title">
+                1、个猫信息 🐱 
+            </h3>
+            <ul>
+                <li>品种：英短猪 🐷 猫</li>
+                <li>年龄：2岁</li>
+                <li>体重：保密</li>
+                <li>获奖情况：畅喵最美の猫大赛一等奖</li>
+            </ul>
+            <h3 class="content-title">
+               2、个猫评价  💼 
+            </h3>
+            <ul>
+                <li>性格：温柔安静，警觉性高</li>
+                <li>技能：睡觉、贴贴、吃小零食</li>
+                <li>优势：摸起来非常治愈；不用包住，妈妈晚上会来接我</li>
+            </ul>
+        </div>
     </div>
-    <div class="info flex">
-      <div>泥嚎！这里是长喆，也可以叫我熊猫。 </div>
-    </div>
-    <div class="compony flex">
-      <div class="content">
-        <div>👨‍🎤 <span>长喆 MrPanda</span></div>
-        <div>👨‍💻 <span>前端开发工程师</span></div>
-        <div>🏢 <span>阿里巴巴集团. 大淘宝技术部.</span></div>
-        <div>📮 <span>mrpandaliu@foxmail.com | changzhe.lc@alibaba-inc.com</span></div>
-        <div>💻 <span>关注内容社交领域和 Web 研发提效工具</span></div>
-      </div>
-    </div>
-    <div class="work flex">
-      <div class="work-item">
-        <h4>字节跳动 大力教育: 2021.1 ~ 2021.12</h4>
-        <ul>
-          <li>k12 效率中后台业务研发，包括：进校活动、销售CRM 和课件中台等业务。</li>
-          <li>中后台开发最佳实践，包括：脚手架、微前端架构、代码规范、包管理和业务实践等方向。</li>
-          <li>接口描述语言和 TypeScript 系统，包括但不限于在各种条件和情况下的类型生成，数据 mock 和页面生成等能力。</li>
-          <li>基于 VS Code 插件的低代码方案，聚焦于物料和组件。</li>
-        </ul>
-        <h4 class="compony-two">阿里巴巴 大淘宝: 2021.12 ~ now</h4>
-        <ul>
-          <li>淘宝逛逛营销活动全链路业务开发和营销活动 H5 页面的架构升级、性能优化。</li>
-        </ul>
-      </div>
-    </div>
-    <footer>
-      Copyright © 2022 changzhe.lc.
-    </footer>
-  </div>
 </body>
-
 </html>
