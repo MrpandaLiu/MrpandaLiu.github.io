@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>纪念日</title>
     <style>
         * {
             padding: 0;
@@ -36,7 +36,6 @@
         .header {
             width: 100%;
             height: 15vw;
-            background: #1d74ac;
             color: white;
             font-size: 4.6vw;
             letter-spacing: 0.1rem;
@@ -55,7 +54,7 @@
 
         .footer {
             width: 100%;
-            height: 10vw;
+            height: 12vw;
             background: #f7f6f4;
             color: #949291;
             border-top: 1px solid rgb(238, 238, 238);
@@ -66,24 +65,45 @@
     <div class="root flex-center">
         <div class="calendar ">
             <div class="header flex-center">
-                畅喵和欣欣已经贴贴了
+                <!-- 畅喵和欣欣已经贴贴了 -->
             </div>
             <div class="content flex-center">
                 <h1 class="number"></h1>
             </div>
             <div class="footer flex-center">
-                目标日：2022-03-08 星期二
+                起始日：2022-03-08 星期二
             </div>
         </div>
     </div>
 </body>
 <script>
+    const MAX_NUMBER = 3;
+    const getRandom = () => {
+        const randomSeed = parseInt(Math.random()*(MAX_NUMBER),10);
+        return randomSeed;
+    }
+
+    const TextArr = [
+        '畅畅和欣欣已经贴贴了',
+        '畅畅成为欣欣的崽崽已经',
+        '畅畅和欣欣相❤️了'
+    ];
+
+    const BackgroundArr = [
+        '#1d74ac',
+        'pink',
+        'orange'
+    ];
+
     window.onload = () => {
         const d1 = new Date();
         const d2 = new Date('2022-03-08');
         const day = (d1 - d2) / (1000 * 60 * 60 * 24);
         const intDay = parseInt(day);
         document.querySelector('.number').innerHTML = intDay;
+        const header = document.querySelector('.header');
+        header.innerHTML = TextArr[getRandom()];
+        header.style.background = BackgroundArr[getRandom()];
     }
 </script>
 </html>
