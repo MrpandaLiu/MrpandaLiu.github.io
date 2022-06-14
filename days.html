@@ -21,6 +21,8 @@
         .root {
             width: 100vw;
             height: 100vh;
+            position: relative;
+            overflow: hidden;
             background: url(https://gw.alicdn.com/imgextra/i2/O1CN01ly0QFw1uC38tNdEfz_!!6000000006000-0-tps-276-276.jpg) repeat;
         }
 
@@ -61,6 +63,15 @@
             color: #949291;
             border-top: 1px solid rgb(238, 238, 238);
         }
+
+        .danmaku {
+            position: absolute;
+            transition: 6s linear;
+            z-index: 10;
+            width: 100%;
+            font-weight: bold;
+            font-size: 18px;
+        }
     </style>
 </head>
 
@@ -68,7 +79,6 @@
     <div class="root flex-center">
         <div class="calendar ">
             <div class="header flex-center">
-                <!-- 畅喵和欣欣已经贴贴了 -->
             </div>
             <div class="content flex-center">
                 <h1 class="number"></h1>
@@ -100,7 +110,43 @@
         'orange'
     ];
 
-    window.onload = () => {
+    const DanmakuColorArr = [
+    '#ecbfc6',
+        '#996699',
+        'white',
+        'orange'
+    ];
+
+    const DanmakuTextArr = [
+        '前方高能！！！',
+        '前方高能！！！',
+        '前方高能！！！',
+        '前方高能！！！',
+        '前方高能！！！',
+        '前方高能！！！',
+        '前方高能！！！',
+        '前方高能！！！',
+        '前方高能！！！',
+        '前方高能！！！',
+        '最爱欣欣惹',
+        '抱抱全世界最可爱最甜的欣欣宝',
+        '想和欣欣贴贴啦',
+        '欣欣全世界最可爱❤',
+        '欣欣全世界最可爱❤',
+        '抱抱全世界最可爱最甜的欣欣宝',
+        '抱抱全世界最可爱最甜的欣欣宝',
+        '稀饭欣欣哦',
+        '想和欣欣贴贴啦',
+        '欣欣全世界最可爱❤',
+        '稀饭欣欣哦',
+        '想和欣欣贴贴啦',
+        '稀饭欣欣哦',
+        '想和欣欣贴贴啦',
+        '稀饭欣欣哦',
+        '抱抱全世界最可爱最甜的欣欣宝'
+    ];
+
+    const initCalendar = () => {
         const d1 = new Date();
         const d2 = new Date('2022-03-08');
         const day = (d1 - d2) / (1000 * 60 * 60 * 24);
@@ -117,6 +163,33 @@
         setInterval(() => {
             setValue();
         }, 4000);
+    }
+
+    const initDanmaku = () => {
+        const root = document.querySelector('.root');
+        const id = setInterval(() => {
+            if (!DanmakuTextArr.length) {
+                clearInterval(id);
+                return;
+            }
+            const item = DanmakuTextArr.shift();
+            const danmaku = document.createElement('div');
+            danmaku.innerText = item;
+            danmaku.className = 'danmaku';
+            danmaku.style.color = DanmakuColorArr[getRandom()]
+            root.appendChild(danmaku);
+            danmaku.style.left = -Math.random() * window.innerWidth + 'px';
+            const top = Math.random() * window.innerHeight + 40;
+            danmaku.style.top = top + 'px';
+            setTimeout(() => {
+                danmaku.style.left = danmaku.style.width + window.innerWidth + 'px';
+            }, 200);
+        }, 600);
+    }
+
+    window.onload = () => {
+        initCalendar();
+        initDanmaku();
     }
 </script>
 
