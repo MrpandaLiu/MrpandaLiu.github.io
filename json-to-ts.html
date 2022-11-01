@@ -5,127 +5,151 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-		<style>
-			* {
-				padding: 0;
-				margin: 0;
-			}
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
 
-			.header {
-				width: 100vw;
-				height: 120px;
-				background: #5f6bda;
-				color: white;
-			}
+      .header {
+        width: 100vw;
+        height: 120px;
+        background: #5f6bda;
+        color: white;
+      }
 
-			.header h1 {
-				margin-left: 25%;
-				font-size: 60px;
-			}
+      .header h1 {
+        margin-left: 25%;
+        font-size: 60px;
+      }
 
-			.header p {
-				margin-left: 25%;
-			}
+      .header p {
+        margin-left: 25%;
+      }
 
-			.wrapper {
-				display: flex;
-				flex-direction: column;
-				width: 50vw;
-				margin: 0 auto;
-			}
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 50vw;
+        margin: 0 auto;
+      }
 
-			textarea {
-				margin: 20px 0;
-				padding: 12px;
-				border: 1px solid #ddd;
-				border-radius: 6px;
-			}
+      textarea {
+        margin: 20px 0;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+      }
 
-			.button {
-				width: 160px;
-				height: 40px;
-				margin: 0px 24px;
-				background: #5f6bda;
-				border: none;
-				color: white;
-				font-size: 16px;
-				cursor: pointer;
-			}
+      .button {
+        width: 160px;
+        height: 40px;
+        margin: 0px 24px;
+        background: #5f6bda;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
 
-			.footer {
-				text-align: center;
-				margin: 24px 0;
-			}
-		</style>
+      .footer {
+        text-align: center;
+        margin: 24px 0;
+      }
+    </style>
   </head>
   <body>
-		<div class="header">
-			<h1>JSON2TS</h1>
-			<p>transform json/js object to Typesciprt interface</p>
-		</div>
-		<div class="wrapper">
-			<textarea name="" id="input" cols="50" rows="20" placeholder="enter JSON or JS Object"></textarea>
-			<button class="button" id="btn">transform JSON</button>
-			<textarea name="" id="output" cols="50" rows="20" placeholder="transform result"></textarea>
-		</div>
-		<p class="footer">made by Mrpanda</p>
+    <div class="header">
+      <h1>JSON2TS</h1>
+      <p>transform json/js object to Typesciprt interface</p>
+    </div>
+    <div class="wrapper">
+      <textarea
+        name=""
+        id="input"
+        cols="50"
+        rows="20"
+        placeholder="enter JSON or JS Object"
+      ></textarea>
+      <button class="button" id="btn">transform JSON</button>
+      <textarea
+        name=""
+        id="output"
+        cols="50"
+        rows="20"
+        placeholder="transform result"
+      ></textarea>
+    </div>
+    <p class="footer">made by Mrpanda</p>
     <script>
-			const btn = document.getElementById("btn");
+      const btn = document.getElementById("btn");
 
-			let globalArr = [];
-			
-			const handleItemType = (key, item) => {
-				if (item === null) return 'null';
-				if (item === 'true' || item === 'false') return '`${boolean}`';
-				const type = typeof item;
-				if (type === 'object') {
-					const capitalized =
-						key.charAt(0).toUpperCase()
-						+ key.slice(1)
-					if (Array.isArray(item)) {
-						return `${createInerface(capitalized, item[0])}[]`
-					}
-					return createInerface(capitalized, item);
-				}
-				return typeof item;
+      let globalArr = [];
+
+			const collectionListObject = (arr) => {
+				const target = {};
+				(arr ||[]).forEach(item => {
+					Object.keys(item).forEach((key) => {
+						if (!target[key]) {
+							target[key] = item[key];
+						}
+					});
+				});
+				return target;
 			}
 
+      const handleItemType = (key, item) => {
+        if (item === null) return "null";
+        if (item === "true" || item === "false") return "`${boolean}`";
+        const type = typeof item;
+        if (type === "object") {
+          const capitalized = key.charAt(0).toUpperCase() + key.slice(1);
+          if (Array.isArray(item)) {
+            return `${createInerface(`${capitalized}Item`, collectionListObject(item))}[]`;
+          }
+          return createInerface(capitalized, item);
+        }
+        return typeof item;
+      };
+
       const createInerface = (interfaceName, object) => {
-				const keys = Object.keys(object);
-				if(keys.length === 0) return '{}';
-				const items = (keys || []).map((key) => {
-							return `  ${key}?: ${handleItemType(key, object[key])};`;
-						}).join('\n');
+        const keys = Object.keys(object);
+        if (keys.length === 0) return "any";
+        const items = (keys || [])
+          .map((key) => {
+            return `  ${key}?: ${handleItemType(key, object[key])};`;
+          })
+          .join("\n");
         const resultStr = `
 interface ${interfaceName} {
 ${items}
 }
 				`;
-				globalArr.push(resultStr);
-				return interfaceName;
+        globalArr.push(resultStr);
+        return interfaceName;
       };
 
       const transform = (string) => {
         try {
-          eval(`window.__tmpStr__ = ${string}`)
-					createInerface('Root', window.__tmpStr__); 
-					delete window.__tmpStr__;
-					const res = globalArr.join('\n');
-					globalArr = [];
-					return res;
+          eval(`window.__tmpStr__ = ${string}`);
+          createInerface("Root", window.__tmpStr__);
+          delete window.__tmpStr__;
+          const res = globalArr.join("\n");
+          globalArr = [];
+          return res;
         } catch (e) {
-          alert('check the input spell is correct! \n' + e);
+          alert("check the input spell is correct! \n" + e);
         }
       };
 
       btn.addEventListener("click", () => {
-			const input = document.getElementById("input");
-      const output = document.getElementById("output");
-				if (input.value.indexOf('<script') !== -1) {
-					alert('存在非法字符哟');
-				} else {
-					output.value = transform(input.value);
-				}
+        const input = document.getElementById("input");
+        const output = document.getElementById("output");
+        if (input.value.indexOf("<script") !== -1) {
+          alert("存在非法字符哟");
+        } else {
+          output.value = transform(input.value);
+        }
       });
     </script>
   </body>
