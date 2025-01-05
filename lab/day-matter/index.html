@@ -23,13 +23,15 @@
     .container {
       width: 100vw;
       height: 100vh;
+      position: relative;
       display: flex;
-      justify-content: center;
+      align-items: center;
       background: url(./wood-bg.webp);
+      flex-direction: column;
     }
 
     .card-wrap {
-      margin-top: 40%;
+      margin-top: 24%;
       width: 90%;
       height: 330px;
       display: flex;
@@ -88,6 +90,31 @@
       font-size: 18px;
       box-shadow: 0 -2px 3px -1px rgba(80, 80, 80, 0.1);
     }
+
+    .avatar-container {
+            width: 150px;
+            height: 150px;
+            margin: 48px auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: rotate 6s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
   </style>
 </head>
 
@@ -106,8 +133,11 @@
         </div>
       </div>
     </div>
+    <div class="avatar-container">
+        <img class="avatar" src="./icons/mingmingjiu.png" alt="avatar">
+    </div>
+    <audio src="./assets/mingmingjiu.mp3" autoplay loop controls></audio>
   </div>
-  <audio src="./assets/mingmingjiu.mp3" autoplay loop></audio>
   <script>
     function getDaysDiff(date1, date2) {
       const oneDay = 24 * 60 * 60 * 1000; // 一天的毫秒数
