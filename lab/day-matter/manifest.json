@@ -2,18 +2,18 @@
     "name": "❤️纪念日",
     "short_name": "❤️纪念日",
     "description": "和许慰姐姐的恋爱纪念日",
-    "start_url": "/lab/day-matter",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#ffffff",
     "icons": [
       {
-        "src": "/icons/icon-64x64.png",
+        "src": "/lab/day-matter/icons/icon-64x64.png",
         "sizes": "64x64",
         "type": "image/png"
       },
       {
-        "src": "/icons/icon-256x256.png",
+        "src": "/lab/day-matter/icons/icon-256x256.png",
         "sizes": "256x256",
         "type": "image/png"
       }
