@@ -136,7 +136,7 @@
     <div class="avatar-container">
         <img class="avatar" src="./icons/mingmingjiu.png" alt="avatar">
     </div>
-    <audio src="./assets/mingmingjiu.mp3" autoplay loop controls></audio>
+    <audio id="audio" src="./assets/mingmingjiu.mp3" autoplay loop controls></audio>
   </div>
   <script>
     function getDaysDiff(date1, date2) {
@@ -168,6 +168,7 @@
     window.onload = () => {
       const element =  document.querySelector('#number');
       animateNumber(getDaysDiff(new Date('2024-12-21'), Date.now()), 1500, element);
+      document.querySelector('audio').click();
     }
   </script>
 </body>
