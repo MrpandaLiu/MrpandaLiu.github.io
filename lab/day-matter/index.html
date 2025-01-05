@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day Matter</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      background: url(./wood-bg.webp);
+    }
+
+    .card-wrap {
+      margin-top: 40%;
+      width: 90%;
+      height: 330px;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border-radius: 8px;
+    }
+
+    .title-wrap {
+      border-radius: 8px 8px 0 0;
+      height: 56px;
+      width: 100%;
+      font-size: 16px;
+      color: #fff;
+      line-height: 56px;
+      text-align: center;
+      font-weight: bold;
+      background: linear-gradient(to bottom, #438fc1, #316b9d);
+      box-shadow:
+        0 2px 4px -1px rgba(0, 0, 0, 0.06),
+        0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .day-wrap {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      background-image:
+        linear-gradient(rgba(238, 238, 238, 0.4) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(238, 238, 238, 0.4) 1px, transparent 1px);
+      background-size: 8px 8px;
+    }
+
+    .number {
+      font-size: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      width: 100%;
+      flex: 1;
+    }
+
+    .target {
+      width: 100%;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a7a5a6;
+      font-size: 18px;
+      box-shadow: 0 -2px 3px -1px rgba(80, 80, 80, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card-wrap">
+      <div class="title-wrap">
+        和许慰姐姐 ❤️ 已经
+      </div>
+      <div class="day-wrap">
+        <div class="number" id="number">
+          
+        </div>
+        <div class="target">
+          目标日: 2024-12-21 星期六
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function getDaysDiff(date1, date2) {
+      const oneDay = 24 * 60 * 60 * 1000; // 一天的毫秒数
+      const diffTime = Math.abs(date2 - date1);
+      return Math.floor(diffTime / oneDay);
+    }
+
+    function animateNumber(target, duration = 1000, element) {
+    let start = 0;
+    let startTime = null;
+
+    function animation(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const progress = (currentTime - startTime) / duration;
+
+        if (progress < 1) {
+            const currentNumber = Math.floor(progress * target);
+            element.textContent = currentNumber;
+            requestAnimationFrame(animation);
+        } else {
+            element.textContent = target;
+        }
+    }
+
+    requestAnimationFrame(animation);
+}
+
+    window.onload = () => {
+      const element =  document.querySelector('#number');
+      animateNumber(getDaysDiff(new Date('2024-12-21'), Date.now()), 1500, element);
+    }
+  </script>
+</body>
+
+</html>
