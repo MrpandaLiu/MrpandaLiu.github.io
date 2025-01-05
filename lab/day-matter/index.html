@@ -133,7 +133,7 @@
         </div>
       </div>
     </div>
-    <div class="avatar-container">
+    <div id="avatar" class="avatar-container">
       <img class="avatar" src="./icons/mingmingjiu.png" alt="avatar">
     </div>
     <audio id="audio" src="./assets/mingmingjiu.mp3" autoplay loop controls></audio>
@@ -168,7 +168,7 @@
     window.onload = () => {
       const element = document.querySelector('#number');
       animateNumber(getDaysDiff(new Date('2024-12-21'), Date.now()), 1500, element);
-      document.addEventListener('touchstart', function () {
+      avatar.addEventListener('click', function () {
         document.querySelector('audio').play();
       }, { once: true });
     }
