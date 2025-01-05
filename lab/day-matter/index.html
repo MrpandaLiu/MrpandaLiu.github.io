@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
   <!-- PWA相关meta标签 -->
   <meta name="theme-color" content="#000000">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -92,29 +92,29 @@
     }
 
     .avatar-container {
-            width: 150px;
-            height: 150px;
-            margin: 48px auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+      width: 150px;
+      height: 150px;
+      margin: 48px auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-        .avatar {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            animation: rotate 6s linear infinite;
-        }
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      animation: rotate 6s linear infinite;
+    }
 
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
 
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   </style>
 </head>
 
@@ -126,7 +126,7 @@
       </div>
       <div class="day-wrap">
         <div class="number" id="number">
-          
+
         </div>
         <div class="target">
           目标日: 2024-12-21 星期六
@@ -134,7 +134,7 @@
       </div>
     </div>
     <div class="avatar-container">
-        <img class="avatar" src="./icons/mingmingjiu.png" alt="avatar">
+      <img class="avatar" src="./icons/mingmingjiu.png" alt="avatar">
     </div>
     <audio id="audio" src="./assets/mingmingjiu.mp3" autoplay loop controls></audio>
   </div>
@@ -146,29 +146,31 @@
     }
 
     function animateNumber(target, duration = 1000, element) {
-    let start = 0;
-    let startTime = null;
+      let start = 0;
+      let startTime = null;
 
-    function animation(currentTime) {
+      function animation(currentTime) {
         if (!startTime) startTime = currentTime;
         const progress = (currentTime - startTime) / duration;
 
         if (progress < 1) {
-            const currentNumber = Math.floor(progress * target);
-            element.textContent = currentNumber;
-            requestAnimationFrame(animation);
+          const currentNumber = Math.floor(progress * target);
+          element.textContent = currentNumber;
+          requestAnimationFrame(animation);
         } else {
-            element.textContent = target;
+          element.textContent = target;
         }
+      }
+
+      requestAnimationFrame(animation);
     }
 
-    requestAnimationFrame(animation);
-}
-
     window.onload = () => {
-      const element =  document.querySelector('#number');
+      const element = document.querySelector('#number');
       animateNumber(getDaysDiff(new Date('2024-12-21'), Date.now()), 1500, element);
-      document.querySelector('audio').click();
+      document.addEventListener('touchstart', function () {
+        document.querySelector('audio').play();
+      }, { once: true });
     }
   </script>
 </body>
